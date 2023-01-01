@@ -3,6 +3,7 @@
 @tailwind base;
 @layer base {
   :root {
+    /* Core design tokens consumed by Tailwind theme mappings and component styles. */
     --color-brand-1: #005461;
     --color-brand-2: #0c7779;
     --color-brand-3: #249e94;
@@ -45,63 +46,48 @@
     }
   }
 
+  /* The global app baseline; component-level typography should build on top of this. */
   body {
     @apply bg-surface dark:bg-surface-inverse font-body;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply font-semibold font-heading;
+  /* Links inherit surrounding text color unless a component opts into a specific token. */
+  a {
+    color: inherit;
   }
 
-  h1 {
-    font-size: clamp(2rem, 10vw, 3rem); /* 32px → 48px */
-    line-height: clamp(2.5rem, 11vw, 4rem); /* Fluid height */
-  }
-
-  h2 {
-    font-size: clamp(1.5rem, 8vw, 2rem); /* 24px → 32px */
-    line-height: clamp(2rem, 9vw, 3rem);
-  }
-
-  h3 {
-    font-size: clamp(1.25rem, 6vw, 1.5rem); /* 20px → 24px */
-    line-height: clamp(1.75rem, 7vw, 2.5rem);
-  }
-
-  h4 {
-    font-size: clamp(1.125rem, 4vw, 1.25rem); /* 18px → 20px */
-    line-height: clamp(1.5rem, 5vw, 2rem);
-  }
-
-  h5 {
-    font-size: clamp(1rem, 3vw, 1.125rem); /* 16px → 18px */
-    line-height: clamp(1.25rem, 4vw, 1.75rem);
-  }
-
-  h6 {
-    font-size: clamp(0.875rem, 2vw, 1rem); /* 14px → 16px */
-    line-height: clamp(1.125rem, 3vw, 1.5rem);
-  }
-
-  p,
-  a,
-  ol,
-  ul,
-  li,
-  label,
-  div,
-  span {
-    font-size: clamp(0.875rem, 2vw, 1rem);
-    line-height: clamp(1.125rem, 3vw, 1.5rem);
+  /* Form controls should follow the same typography as the surrounding UI. */
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
   }
 
   .container {
     @apply px-4;
+  }
+
+  /* Lenis requires these base overrides to control scrolling consistently. */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  .lenis.lenis-smooth iframe {
+    pointer-events: none;
   }
 }
 

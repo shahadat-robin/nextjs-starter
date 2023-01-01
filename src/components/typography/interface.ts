@@ -1,13 +1,31 @@
 import type { ClassValue } from 'clsx';
-import type { PropsWithChildren } from 'react';
+import type { ElementType, PropsWithChildren } from 'react';
 
-// the possible heading, paragraph, and other sizes.
-type Heading = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-type Paragraph = 'p';
+type TypographyVariant =
+  | 'display'
+  | 'h1'
+  | 'h2'
+  | 'h3'
+  | 'h4'
+  | 'h5'
+  | 'h6'
+  | 'subheading'
+  | 'body-lg'
+  | 'body'
+  | 'body-sm'
+  | 'button'
+  | 'caption'
+  | 'overline'
+  | 'p'
+  | 'span';
+
+type TypographyStyle = 'default' | 'accent' | 'muted' | 'strikethrough';
 
 interface ITypography extends PropsWithChildren {
-  variant?: Heading | Paragraph | 'span';
+  as?: ElementType;
+  variant?: TypographyVariant;
   className?: ClassValue;
+  style?: TypographyStyle;
 }
 
 export default ITypography;

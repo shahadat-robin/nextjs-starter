@@ -11,14 +11,9 @@ export default function AppHeader() {
   return (
     <header className="py-5 sticky top-0 bg-primary dark:bg-dark-light z-50">
       <Container className="flex items-center justify-between">
-        <Image
-          src="/next.svg"
-          alt="Brand logo"
-          width={100}
-          height={50}
-          className="h-auto w-[6.25rem] cursor-pointer"
-          priority
-        />
+        <div className="w-[100px] h-[50px] relative">
+          <Image src="/next.svg" alt="Brand logo" fill className="cursor-pointer" priority />
+        </div>
 
         <label htmlFor="theme-toggle" className="flex items-center cursor-pointer">
           <div className="relative min-h-[30px] w-[55px] rounded-full bg-white">

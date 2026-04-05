@@ -6,8 +6,6 @@ const HomePage: NextPage = () => (
   <>
     <HeroSection />
     <AnotherSection />
-    <AnotherSection />
-    <AnotherSection />
   </>
 );
 

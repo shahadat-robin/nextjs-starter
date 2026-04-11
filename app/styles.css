@@ -2,8 +2,51 @@
 
 @tailwind base;
 @layer base {
+  :root {
+    --color-brand-1: #005461;
+    --color-brand-2: #0c7779;
+    --color-brand-3: #249e94;
+    --color-brand-4: #3bc1a8;
+
+    --color-neutral-0: #ffffff;
+    --color-neutral-1: #f2f2f2;
+    --color-neutral-2: #e6e6e6;
+    --color-neutral-3: #d9d9d9;
+    --color-neutral-4: #bfbfbf;
+    --color-neutral-5: #999999;
+    --color-neutral-6: #808080;
+    --color-neutral-7: #666666;
+    --color-neutral-8: #4d4d4d;
+    --color-neutral-9: #262626;
+    --color-neutral-10: #000000;
+
+    --color-brand: var(--color-brand-1);
+    --color-brand-soft: var(--color-brand-2);
+
+    --color-text: var(--color-neutral-9);
+    --color-text-muted: var(--color-neutral-6);
+    --color-text-inverse: var(--color-neutral-0);
+
+    --color-surface: var(--color-neutral-0);
+    --color-surface-soft: var(--color-neutral-1);
+    --color-surface-muted: var(--color-neutral-2);
+    --color-surface-inverse: var(--color-neutral-10);
+    --color-surface-overlay: rgb(255 255 255 / 0.8);
+
+    --color-border: var(--color-neutral-4);
+    --color-border-hover: var(--color-neutral-5);
+
+    --header-height: 84px;
+  }
+
+  @media (min-width: 1024px) {
+    :root {
+      --header-height: 100px;
+    }
+  }
+
   body {
-    @apply bg-white-deep dark:bg-dark font-body;
+    @apply bg-surface dark:bg-surface-inverse font-body;
   }
 
   h1,

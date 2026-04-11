@@ -10,29 +10,25 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: {
-          DEFAULT: '#ff4733',
-          light: '#ffada2',
-          lighter: '#ffc6bf',
+        brand: {
+          DEFAULT: 'var(--color-brand)',
+          soft: 'var(--color-brand-soft)',
         },
 
-        white: {
-          DEFAULT: '#EEEEEE',
-          deep: '#ffffff',
-          light: '#edf6f9',
-        },
+        'foreground-text': 'var(--color-text)',
+        'muted-text': 'var(--color-text-muted)',
+        'inverse-text': 'var(--color-text-inverse)',
 
-        dark: {
-          DEFAULT: '#26282B',
-          deep: '#1e1e1e',
-          light: '#363B4E',
+        surface: {
+          DEFAULT: 'var(--color-surface)',
+          soft: 'var(--color-surface-soft)',
+          muted: 'var(--color-surface-muted)',
+          inverse: 'var(--color-surface-inverse)',
+          overlay: 'var(--color-surface-overlay)',
         },
-
-        gray: {
-          DEFAULT: '#555555',
-          deep: '#404040',
-          light: '#999999',
-        },
+      },
+      borderColor: {
+        DEFAULT: 'var(--color-border)',
       },
       fontFamily: {
         heading: ['"Averia Serif Libre"', 'serif'],

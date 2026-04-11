@@ -1,70 +1,125 @@
-# NextJS-Starter
+# Devkitlab Next.js Template
 
-This is a [Next.js](https://nextjs.org/) project starter kit bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+A clean starter for building modern web apps with Next.js, TypeScript, and Tailwind CSS.
 
-## Features
+## Stack
 
-- **Next.js 14:** The latest version of Next.js with all its powerful features.
-- **TypeScript:** TypeScript support for type safety and better developer experience.
-- **Tailwind CSS:** Utility-first CSS framework for rapid UI development.
-- **Theaming:** Dark and Light theme enhanched.
-- **ESLint and Prettier:** Code quality tools to maintain a consistent codebase.
-- **Husky:** Automatically lint commit messages and code upon committing.
-- **Environment Variables:** Easy management of environment variables.
-- **Customizable Layout:** Flexible layouting components.
+- Next.js 16 (App Router)
+- React 19 + TypeScript
+- Tailwind CSS
+- `next-themes` for light/dark mode
+- ESLint + Prettier
+- Husky + lint-staged
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Requirements
 
-## Getting Start
+- Node.js `>= 18.17.0`
+- Yarn `>= 1.22.0`
 
-### Prerequisites
+This template is Yarn-first. `npm`/`pnpm` are intentionally blocked by `preinstall`.
 
-- Node.js (>= 18.17)
-- yarn
-
-### Installation
+## Quick Start
 
 ```bash
-
-# Clone the repository:
-git clone https://github.com/yourusername/NextJS-Starter.git
-
-# Go to project directory
-cd NextJS-Starter
-
-# Install dependencies:
 yarn
-
-# Start the development server:
 yarn dev
-# or
-npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) into your browser to see the result.
+Open `http://localhost:3000`.
+
+## First 10 Minutes
+
+1. Run the app locally:
+
+```bash
+yarn
+yarn dev
+```
+
+2. Update page content in `app/(home)/page.tsx`.
+3. Customize hero and sections in `app/(home)/sub-components/`.
+4. Update app metadata in `app/layout.tsx`.
+5. Run `yarn lint` before your first commit.
 
 ## Project Structure
 
 ```plaintext
-root/
-├── public/                # Static assets
-│   app/                   # Next.js pages
-│   ├── _layout/           # Layout components
-│   └── (home)/            # Home page grouping
-├── src/
-│   ├── components/        # Reusable components
-│   ├── utils/             # Utility functions
-│   ├── hooks/             # Custom React hooks
-│   └── services/          # API services
-├── .eslintrc.json         # ESLint configuration
-├── .prettierrc            # Prettier configuration
-├── next.config.js         # Next.js configuration
-├── tsconfig.json          # TypeScript configuration
-└── package.json           # Project metadata and scripts
+app/
+  layout.tsx                # Root layout
+  provider.tsx              # Global providers (theme, smooth scroll)
+  not-found.tsx             # 404 page
+  global-error.tsx          # App-wide error boundary
+  (home)/
+    page.tsx                # Home route
+    error.tsx               # Route-level error boundary
+    sub-components/         # Home sections
+  _layout/
+    header.tsx
+    footer.tsx
+
+src/
+  components/               # Reusable UI primitives
+  utils/class-merge.ts      # cn() helper (clsx + tailwind-merge)
 ```
 
-## Learn More
+## Conventions
 
-To learn more about Next.js, take a look at the following resources:
+- Keep route UI in `app/`; keep reusable primitives in `src/components/`.
+- Use `@/` alias imports from `tsconfig.json`.
+- Prefer utility-first styling with Tailwind.
+- Keep components small and composable.
+- Maintain accessibility basics (`alt`, labels, semantic buttons).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+## Add a New Home Section
+
+1. Create a component in `app/(home)/sub-components/feature-section.tsx`.
+2. Import it into `app/(home)/page.tsx`.
+3. Render it where needed.
+
+Example:
+
+```tsx
+import FeatureSection from './sub-components/feature-section';
+
+const HomePage = () => (
+  <>
+    <HeroSection />
+    <FeatureSection />
+    <AnotherSection />
+  </>
+);
+```
+
+## Error Handling Rules
+
+For App Router error boundaries:
+
+- `app/(segment)/error.tsx` and `app/global-error.tsx` must be Client Components.
+- `global-error.tsx` must include `<html>` and `<body>`.
+- Use `reset()` to retry rendering.
+
+## Scripts
+
+```bash
+yarn dev      # Start development server
+yarn build    # Build for production
+yarn start    # Start production server
+yarn lint     # Run ESLint
+yarn format   # Run Prettier
+```
+
+## Common Mistakes
+
+- Error boundary button does nothing.
+  Use `reset()` instead of deprecated patterns.
+- Lint fails after edits.
+  Run `yarn lint` and fix warnings/errors before push.
+- Styling conflicts in class names.
+  Use `cn()` helper for safe Tailwind class merging.
+
+## Recommended Before Push
+
+```bash
+yarn lint
+yarn build
+```

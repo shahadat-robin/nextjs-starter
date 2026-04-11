@@ -59,7 +59,7 @@ app/
 
 src/
   components/               # Reusable UI primitives
-  utils/class-merge.ts      # cn() helper (clsx + tailwind-merge)
+  utils/                    # helper functions
 ```
 
 ## Conventions
